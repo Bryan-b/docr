@@ -6,43 +6,33 @@ A modern, dark-themed web application for adding professional letterheads and di
 
 ```mermaid
 flowchart TD
-    A[👤 User Visits] --> B[📤 Upload Document]
-    B --> C[🔍 File Validation]
-    C -->|✅ Valid| D[💾 Store as Base64]
-    C -->|❌ Invalid| E[⚠️ Error Message]
-    E --> B
+    A[👤 Start] --> B[📄 Upload Document]
+    B --> C[⚙️ Configure Features]
+    C --> D[📥 Download Result]
     
-    D --> F[⚙️ Feature Selection]
-    F --> G[📋 Letterhead Config]
-    F --> H[✍️ Signature Config]
-    F --> I[📋 + ✍️ Both]
+    B1[📋 Letterhead<br/>Company info & logo]
+    B2[✍️ Signature<br/>Digital signing]
+    B3[👀 Preview<br/>Live document view]
     
-    G --> J[👀 Live Preview]
-    H --> K[🖱️ Drag Position]
-    K --> J
-    I --> G
+    C --> B1
+    C --> B2
+    C --> B3
     
-    J --> L{✅ Complete?}
-    L -->|No| M[⚠️ Validation Errors]
-    M --> F
-    L -->|Yes| N[🔧 Process Document]
+    D1[📄 PDF Export]
+    D2[🖼️ Image Export]
+    D3[⚙️ Quality Options]
     
-    N --> O[🏗️ Create HTML]
-    O --> P[📸 Generate Canvas]
-    P --> Q[📄 Export PDF/Image]
-    Q --> R[⬇️ Download]
+    D --> D1
+    D --> D2
+    D --> D3
     
-    classDef user fill:#4facfe,stroke:#333,stroke-width:2px,color:#fff
-    classDef process fill:#21262d,stroke:#4facfe,stroke-width:2px,color:#f0f6fc
-    classDef decision fill:#f87171,stroke:#333,stroke-width:2px,color:#fff
-    classDef success fill:#10b981,stroke:#333,stroke-width:2px,color:#fff
-    classDef error fill:#ef4444,stroke:#333,stroke-width:2px,color:#fff
+    classDef main fill:#4facfe,stroke:#333,stroke-width:3px,color:#fff
+    classDef feature fill:#21262d,stroke:#4facfe,stroke-width:2px,color:#f0f6fc
+    classDef output fill:#10b981,stroke:#333,stroke-width:2px,color:#fff
     
-    class A,B,F,N,R user
-    class D,G,H,J,O,P,Q process
-    class C,L decision
-    class R success
-    class E,M error
+    class A,B,C,D main
+    class B1,B2,B3 feature
+    class D1,D2,D3 output
 ```
 
 ## ✨ Features
@@ -81,7 +71,7 @@ docr/
 │   ├── signature/          # Signature editor & dragging
 │   └── ui/                 # Base UI components
 ├── lib/                    # Core logic
-│   ├── document-processor.ts # Processing engine
+│   └── document-processor.ts # Processing engine
 └── types/                  # TypeScript definitions
 ```
 
