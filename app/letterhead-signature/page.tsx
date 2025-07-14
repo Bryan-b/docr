@@ -45,7 +45,6 @@ export default function LetterheadSignaturePage() {
     fontFamily: "Roboto",
     position: "left",
     coordinates: { x: 20, y: 400 },
-    backgroundRemoval: false,
     createdAt: new Date(),
   });
 

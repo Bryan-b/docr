@@ -366,9 +366,7 @@ export function DocumentPreview({
                     <div className="inline-block min-w-[200px]">
                       {signature.style === "image" && signature.image ? (
                         <img
-                          src={
-                            signature.image.processedUrl || signature.image.url
-                          }
+                          src={signature.image.url}
                           alt="Signature"
                           className="max-w-[200px] max-h-[80px] object-contain block mb-2"
                         />

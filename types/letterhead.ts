@@ -64,17 +64,14 @@ export interface SignatureConfig {
   fontFamily: string;
   position: "left" | "center" | "right";
   coordinates?: { x: number; y: number };
-  backgroundRemoval: boolean;
   createdAt: Date;
 }
 
 export interface SignatureImageConfig {
   file: File;
   url: string;
-  processedUrl?: string;
   width: number;
   height: number;
-  hasTransparentBackground?: boolean;
 }
 
 export const DEFAULT_LETTERHEAD_CONFIG: Omit<

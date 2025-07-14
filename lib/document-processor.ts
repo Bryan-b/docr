@@ -340,7 +340,7 @@ export class DocumentProcessor {
 
     if (signature.style === "image" && signature.image) {
       const img = window.document.createElement("img");
-      img.src = signature.image.processedUrl || signature.image.url;
+      img.src = signature.image.url;
       img.crossOrigin = "anonymous";
       img.style.cssText = `
         max-width: 200px;
