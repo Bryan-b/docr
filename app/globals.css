@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 15 16 20; /* #0f1014 - Much darker background */
+    --foreground: 240 246 252; /* #f0f6fc - Softer white */
+    --card: 22 24 29; /* #16181d - Darker card background */
+    --card-foreground: 240 246 252;
+    --popover: 22 24 29;
+    --popover-foreground: 240 246 252;
+    --primary: 79 172 254; /* #4facfe - Brighter blue for contrast */
+    --primary-foreground: 15 16 20;
+    --secondary: 33 38 45; /* #21262d - Darker secondary */
+    --secondary-foreground: 240 246 252;
+    --muted: 33 38 45;
+    --muted-foreground: 139 148 158; /* #8b949e - Muted text */
+    --accent: 79 172 254 / 0.15;
+    --accent-foreground: 240 246 252;
+    --destructive: 248 113 113; /* #f87171 - Softer red */
+    --destructive-foreground: 240 246 252;
+    --border: 33 38 45;
+    --input: 33 38 45;
+    --ring: 79 172 254;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+}
+
+@layer components {
+  .docr-card {
+    @apply bg-card border-secondary/60 shadow-2xl;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  }
+  
+  .docr-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px 0 rgba(79, 172, 254, 0.3);
+  }
+  
+  .docr-button-primary:hover {
+    box-shadow: 0 6px 20px 0 rgba(79, 172, 254, 0.4);
+  }
+  
+  .docr-button-secondary {
+    @apply bg-secondary/20 text-primary border border-secondary/60 hover:bg-secondary/30;
+    transition: all 0.2s ease;
+  }
+  
+  .docr-modal {
+    @apply bg-card border-secondary/60;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .docr-upload-zone {
+    @apply border-2 border-dashed border-secondary/40 hover:border-primary/60 bg-background/50;
+    transition: all 0.3s ease;
+  }
+  
+  .docr-upload-zone.active {
+    @apply border-primary bg-primary/10;
+    box-shadow: 0 0 0 1px rgba(79, 172, 254, 0.3);
+  }
+  
+  .docr-feature-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-primary shadow-sm;
+    box-shadow: 0 0 8px rgba(79, 172, 254, 0.6);
+  }
+  
+  .docr-step-indicator {
+    @apply w-8 h-8 rounded-full border-2 border-secondary/40 bg-background/50 backdrop-blur-sm;
+    transition: all 0.3s ease;
+  }
+  
+  .docr-step-indicator.active {
+    @apply bg-primary border-primary text-primary-foreground;
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
+  }
+  
+  .docr-gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(79, 172, 254, 0.05) 100%);
+    border: 1px solid rgba(79, 172, 254, 0.2);
+  }
+  
+  .docr-gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(79, 172, 254, 0.3), transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+
+  .docr-switch {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full border-2 border-transparent transition-colors;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .docr-switch[data-state="checked"] {
+    @apply bg-primary;
+  }
+  
+  .docr-switch[data-state="unchecked"] {
+    @apply bg-secondary/40;
+  }
+  
+  .docr-switch-thumb {
+    @apply pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform;
+  }
+  
+  .docr-switch[data-state="checked"] .docr-switch-thumb {
+    @apply translate-x-5;
+  }
+  
+  .docr-switch[data-state="unchecked"] .docr-switch-thumb {
+    @apply translate-x-0;
+  }
+}
